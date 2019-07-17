@@ -9,15 +9,17 @@ import static ExpenseService.Project.ProjectType.*;
 
 class ExpenseService {
     static ExpenseType getExpenseCodeByProjectTypeAndName(Project project) throws UnexpectedProjectTypeException {
-        if(project.getProjectType() == INTERNAL){
+        ProjectType projectType = project.getProjectType();
+        if(projectType == INTERNAL){
             return INTERNAL_PROJECT_EXPENSE;
         }else{
-            if(project.getProjectType() == EXTERNAL){
-                if(project.getProjectName().equals("Project A")){
+            if(projectType == EXTERNAL){
+                String projectName = project.getProjectName();
+                if(projectName.equals("Project A")){
                     return EXPENSE_TYPE_A;
                 }
 
-                if(project.getProjectName().equals("Project B")){
+                if(projectName.equals("Project B")){
                     return EXPENSE_TYPE_B;
                 }
 
